@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fogón de la Abuela | Comida típica colombiana en Chapinero, Bogotá</title>
+  <meta name="description" content="Restaurante de comida típica colombiana en Chapinero, Bogotá. Consulta el menú y los precios, conoce el lugar y reserva tu mesa en línea.">
+  <meta name="theme-color" content="#C0502E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3Cpath%20d='M12%202.5c.6%203.6%205.5%205.6%205.5%2010.8a5.5%205.5%200%200%201-11%200c0-2.6%201.3-4.3%202.7-5.4.2%201.9%201%203.1%202.6%203.6-.6-3.4-.5-6.2.2-9z'%20fill='%23C0502E'/%3E%3Cpath%20d='M12%2021a2.4%202.4%200%200%201-2.4-2.4c0-1.5%201.1-2.5%202.4-4%201.3%201.5%202.4%202.5%202.4%204A2.4%202.4%200%200%201%2012%2021z'%20fill='%23E0A526'/%3E%3C/svg%3E">
+
+  <!-- Fuentes: Playfair Display (títulos) y Nunito (texto) desde Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap">
+
+  <!-- Estilos del sitio -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Comportamiento: defer ejecuta el script cuando el HTML ya está cargado.
+       No se usa type="module" para que el sitio funcione al abrirlo con doble clic (file://). -->
+  <script src="app.js" defer></script>
+</head>
+<body>
+
+  <!-- ==========================================================
+       ÍCONOS SVG
+       Se definen una sola vez y se reutilizan con <use href="#...">.
+       Toman el color del texto (currentColor); son decorativos.
+       ========================================================== -->
+  <svg xmlns="http://www.w3.org/2000/svg" hidden>
+    <symbol id="icon-fuego" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2.5c.6 3.6 5.5 5.6 5.5 10.8a5.5 5.5 0 0 1-11 0c0-2.6 1.3-4.3 2.7-5.4.2 1.9 1 3.1 2.6 3.6-.6-3.4-.5-6.2.2-9z"/>
+      <path d="M12 21a2.4 2.4 0 0 1-2.4-2.4c0-1.5 1.1-2.5 2.4-4 1.3 1.5 2.4 2.5 2.4 4A2.4 2.4 0 0 1 12 21z" style="fill: var(--fuego-interior, currentColor); stroke: none"/>
+    </symbol>
+    <symbol id="icon-cuchara" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="8" cy="8" rx="3.5" ry="5" transform="rotate(-45 8 8)"/>
+      <path d="M11 11l9 9"/>
+    </symbol>
+    <symbol id="icon-canasta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M7 10a5 5 0 0 1 10 0"/>
+      <path d="M3 10h18l-2 9H5z"/>
+      <path d="M9 13v3M12 13v3M15 13v3"/>
+    </symbol>
+    <symbol id="icon-ubicacion" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/>
+      <circle cx="12" cy="10" r="2.5"/>
+    </symbol>
+    <symbol id="icon-reloj" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 7v5l3 2"/>
+    </symbol>
+    <symbol id="icon-mensaje" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 5h16v11H9l-5 4z"/>
+      <path d="M8 9.5h8M8 12.5h5"/>
+    </symbol>
+    <symbol id="icon-comillas" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 7H5v6h4c0 2.2-1.2 3.5-4 4.5"/>
+      <path d="M20 7h-5v6h4c0 2.2-1.2 3.5-4 4.5"/>
+    </symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M4 6h16M4 12h16M4 18h16"/>
+    </symbol>
+    <symbol id="icon-cerrar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M6 6l12 12M18 6L6 18"/>
+    </symbol>
+    <symbol id="icon-flecha-arriba" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 12.5l4.5 4.5L19 7"/>
+    </symbol>
+    <symbol id="icon-alerta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3L2 20h20z"/>
+      <path d="M12 10v4M12 17h.01"/>
+    </symbol>
+  </svg>
+
+  <!-- Enlace para saltar la navegación con el teclado (visible solo al recibir el foco) -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ==========================================================
+       1. ENCABEZADO FIJO
+       Logotipo, navegación principal y botón "Reservar" siempre visible.
+       En pantallas menores de 1024 px la lista se muestra como menú hamburguesa.
+       ========================================================== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+
+      <a class="logo" href="#inicio">
+        <svg class="icon logo__icon" aria-hidden="true" focusable="false"><use href="#icon-fuego"></use></svg>
+        <span class="logo__text">Fogón de la Abuela</span>
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <!-- Botón del menú móvil: app.js actualiza aria-expanded y el texto oculto -->
+        <button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+          <svg class="icon nav__toggle-icon nav__toggle-icon--open" aria-hidden="true" focusable="false"><use href="#icon-menu"></use></svg>
+          <svg class="icon nav__toggle-icon nav__toggle-icon--close" aria-hidden="true" focusable="false"><use href="#icon-cerrar"></use></svg>
+          <span class="visually-hidden" id="nav-toggle-texto">Abrir menú</span>
+        </button>
+
+        <ul class="nav__list" id="menu-principal">
+          <li><a class="nav__link" href="#nosotros">Nosotros</a></li>
+          <li><a class="nav__link" href="#menu">Menú</a></li>
+          <li><a class="nav__link" href="#galeria">Galería</a></li>
+          <li><a class="nav__link" href="#testimonios">Testimonios</a></li>
+          <li><a class="nav__link" href="#ubicacion">Ubicación</a></li>
+        </ul>
+      </nav>
+
+      <a class="btn btn--primary btn--small site-header__cta" href="#reservas">Reservar</a>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ==========================================================
+         2. INICIO (HERO)
+         Único H1 de la página. La imagen nunca lleva texto encima.
+         Imagen 4:5 en móvil y 16:9 desde 768 px (48em).
+         ========================================================== -->
+    <section class="section hero" id="inicio" aria-labelledby="titulo-inicio">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <h1 class="hero__title" id="titulo-inicio">Sabor de casa, cocinado a fuego lento</h1>
+          <p class="hero__lead">Comida típica colombiana en el corazón de Chapinero.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#reservas">Reservar mesa</a>
+            <a class="btn btn--secondary" href="#menu">Ver menú</a>
+          </div>
+        </div>
+
+        <picture class="hero__media">
+          <source media="(min-width: 48em)" srcset="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%201600%20900'%3E%3Crect%20width='1600'%20height='900'%20fill='%23EFE2CF'/%3E%3Ctext%20x='50%25'%20y='50%25'%20fill='%236B5A4E'%20font-family='sans-serif'%20font-size='56'%20text-anchor='middle'%20dominant-baseline='middle'%3EImagen%20de%20ejemplo%3C/text%3E%3C/svg%3E" width="1600" height="900">
+          <img class="hero__img" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%201000'%3E%3Crect%20width='800'%20height='1000'%20fill='%23EFE2CF'/%3E%3Ctext%20x='50%25'%20y='50%25'%20fill='%236B5A4E'%20font-family='sans-serif'%20font-size='40'%20text-anchor='middle'%20dominant-baseline='middle'%3EImagen%20de%20ejemplo%3C/text%3E%3C/svg%3E" width="800" height="1000" fetchpriority="high"
+               alt="Mesa servida con ajiaco, bandeja paisa y aguapanela junto al fogón de leña">
+        </picture>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         3. NOSOTROS
+         Encabezado de sección + 3 tarjetas informativas + acción secundaria.
+         ========================================================== -->
+    <section class="section section--alt" id="nosotros" aria-labelledby="titulo-nosotros">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title" id="titulo-nosotros">Nuestra cocina</h2>
+          <p class="section__intro">Desde hace más de 20 años cocinamos como en casa: sin afán y con lo mejor de la plaza.</p>
+        </header>
+
+        <ul role="list" class="card-grid card-grid--trio">
+          <li class="card card--info">
+            <svg class="icon card__icon" aria-hidden="true" focusable="false"><use href="#icon-fuego"></use></svg>
+            <h3 class="card__title">Cocina de leña</h3>
+            <p class="card__text">Nuestros sancochos, fríjoles y chocolates se cocinan a fuego lento, como en las casas de antes.</p>
+          </li>
+          <li class="card card--info">
+            <svg class="icon card__icon" aria-hidden="true" focusable="false"><use href="#icon-cuchara"></use></svg>
+            <h3 class="card__title">Recetas de familia</h3>
+            <p class="card__text">Preparamos las recetas que la abuela enseñó a tres generaciones, sin atajos.</p>
+          </li>
+          <li class="card card--info">
+            <svg class="icon card__icon" aria-hidden="true" focusable="false"><use href="#icon-canasta"></use></svg>
+            <h3 class="card__title">Ingredientes de la plaza</h3>
+            <p class="card__text">Compramos cada mañana a productores de la sabana y de la plaza de mercado.</p>
+          </li>
+        </ul>
+
+        <div class="section__actions">
+          <a class="btn btn--secondary" href="#menu">Ver el menú</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         4. MENÚ
+         Filtros por categoría (solo se muestran con JavaScript) y 12 platos.
+         Sin JavaScript se ven todos los platos.
+         Cada plato lleva data-category para que app.js pueda filtrarlo.
+         ========================================================== -->
+    <section class="section" id="menu" aria-labelledby="titulo-menu">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title" id="titulo-menu">Nuestra carta</h2>
+          <p class="section__intro">Platos típicos de varias regiones de Colombia, servidos como en casa.</p>
+          <p class="section__note">Precios en pesos colombianos (COP), con impuestos incluidos.</p>
+        </header>
+
+        <!-- Filtros: botones con aria-pressed; solo uno activo a la vez -->
+        <div class="filters" role="group" aria-label="Filtrar platos por categoría">
+          <button class="filters__btn" type="button" data-filter="todos" aria-pressed="true">Todos</button>
+          <button class="filters__btn" type="button" data-filter="platos-fuertes" aria-pressed="false">Platos fuertes</button>
+          <button class="filters__btn" type="button" data-filter="sopas" aria-pressed="false">Sopas</button>
+          <button class="filters__btn" type="button" data-filter="bebidas" aria-pressed="false">Bebidas</button>
+          <button class="filters__btn" type="button" data-filter="postres" aria-pressed="false">Postres</button>
+        </div>
+
+        <!-- Región que anuncia el resultado del filtro a los lectores de pantalla -->
+        <p class="visually-hidden" id="menu-estado" role="status"></p>
+
+        <ul role="list" class="card-grid card-grid--dishes" id="lista-platos">
+          <!-- Platos fuertes -->
+          <li class="card card--dish" data-category="platos-fuertes">
+            <p class="card__category">Platos fuertes</p>
+            <h3 class="card__title">Bandeja paisa</h3>
+            <p class="card__text">Fríjoles, arroz, carne molida, chicharrón, huevo frito, maduro, arepa y aguacate.</p>
+            <p class="card__price"><data value="38000">$ 38.000</data></p>
+          </li>
+          <li class="card card--dish" data-category="platos-fuertes">
+            <p class="card__category">Platos fuertes</p>
+            <h3 class="card__title">Posta negra cartagenera</h3>
+            <p class="card__text">Carne de res en salsa oscura de panela, con arroz con coco y patacón.</p>
+            <p class="card__price"><data value="36000">$ 36.000</data></p>
+          </li>
+          <li class="card card--dish" data-category="platos-fuertes">
+            <p class="card__category">Platos fuertes</p>
+            <h3 class="card__title">Sobrebarriga criolla</h3>
+            <p class="card__text">Sobrebarriga en hogao criollo, con papa salada, arroz y ensalada.</p>
+            <p class="card__price"><data value="34000">$ 34.000</data></p>
+          </li>
+
+          <!-- Sopas -->
+          <li class="card card--dish" data-category="sopas">
+            <p class="card__category">Sopas</p>
+            <h3 class="card__title">Ajiaco santafereño</h3>
+            <p class="card__text">Tres papas, pollo desmechado y guascas, con crema, alcaparras, arroz y aguacate.</p>
+            <p class="card__price"><data value="29000">$ 29.000</data></p>
+          </li>
+          <li class="card card--dish" data-category="sopas">
+            <p class="card__category">Sopas</p>
+            <h3 class="card__title">Sancocho trifásico</h3>
+            <p class="card__text">Res, cerdo y pollo con yuca, papa, plátano y mazorca, cocinado en leña.</p>
+            <p class="card__price"><data value="31000">$ 31.000</data></p>
+          </li>
+          <li class="card card--dish" data-category="sopas">
+            <p class="card__category">Sopas</p>
+            <h3 class="card__title">Mute santandereano</h3>
+            <p class="card__text">Sopa espesa de maíz pelado, costilla, garbanzo y verduras.</p>
+            <p class="card__price"><data value="27000">$ 27.000</data></p>
+          </li>
+
+          <!-- Bebidas -->
+          <li class="card card--dish" data-category="bebidas">
+            <p class="card__category">Bebidas</p>
+            <h3 class="card__title">Aguapanela con limón</h3>
+            <p class="card__text">Bebida de panela, fría o caliente, con limón recién exprimido.</p>
+            <p class="card__price"><data value="6000">$ 6.000</data></p>
+          </li>
+          <li class="card card--dish" data-category="bebidas">
+            <p class="card__category">Bebidas</p>
+            <h3 class="card__title">Jugo de lulo</h3>
+            <p class="card__text">Lulo natural, en agua o en leche.</p>
+            <p class="card__price"><data value="8000">$ 8.000</data></p>
+          </li>
+          <li class="card card--dish" data-category="bebidas">
+            <p class="card__category">Bebidas</p>
+            <h3 class="card__title">Chocolate santafereño con queso</h3>
+            <p class="card__text">Chocolate caliente con queso campesino y almojábana.</p>
+            <p class="card__price"><data value="12000">$ 12.000</data></p>
+          </li>
+
+          <!-- Postres -->
+          <li class="card card--dish" data-category="postres">
+            <p class="card__category">Postres</p>
+            <h3 class="card__title">Postre de natas</h3>
+            <p class="card__text">Postre tradicional bogotano de natas de leche, con uvas pasas.</p>
+            <p class="card__price"><data value="10000">$ 10.000</data></p>
+          </li>
+          <li class="card card--dish" data-category="postres">
+            <p class="card__category">Postres</p>
+            <h3 class="card__title">Brevas con arequipe</h3>
+            <p class="card__text">Brevas en almíbar acompañadas de arequipe y queso fresco.</p>
+            <p class="card__price"><data value="11000">$ 11.000</data></p>
+          </li>
+          <li class="card card--dish" data-category="postres">
+            <p class="card__category">Postres</p>
+            <h3 class="card__title">Arroz con leche</h3>
+            <p class="card__text">Arroz cremoso con canela, clavos y uvas pasas.</p>
+            <p class="card__price"><data value="9000">$ 9.000</data></p>
+          </li>
+        </ul>
+
+        <div class="section__actions">
+          <a class="btn btn--primary" href="#reservas">Reservar mesa</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         5. GALERÍA
+         6 imágenes 4:3 con pie de foto, sin tarjetas.
+         El texto alternativo describe la foto; el pie solo la nombra.
+         ========================================================== -->
+    <section class="section section--alt" id="galeria" aria-labelledby="titulo-galeria">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title" id="titulo-galeria">Así se vive el Fogón</h2>
+          <p class="section__intro">Un vistazo a nuestro comedor, a la cocina y a los platos de la casa.</p>
+        </header>
+
+        <ul role="list" class="gallery">
+          <li class="gallery__item">
+            <figure>
+              <img class="gallery__img" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20600'%3E%3Crect%20width='800'%20height='600'%20fill='%23EFE2CF'/%3E%3Ctext%20x='50%25'%20y='50%25'%20fill='%236B5A4E'%20font-family='sans-serif'%20font-size='40'%20text-anchor='middle'%20dominant-baseline='middle'%3EImagen%20de%20ejemplo%3C/text%3E%3C/svg%3E" width="800" height="600" loading="lazy"
+                   alt="Comedor con mesas de madera, manteles de cuadros y luz cálida">
+              <figcaption class="gallery__caption">Comedor</figcaption>
+            </figure>
+          </li>
+          <li class="gallery__item">
+            <figure>
+              <img class="gallery__img" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20600'%3E%3Crect%20width='800'%20height='600'%20fill='%23EFE2CF'/%3E%3Ctext%20x='50%25'%20y='50%25'%20fill='%236B5A4E'%20font-family='sans-serif'%20font-size='40'%20text-anchor='middle'%20dominant-baseline='middle'%3EImagen%20de%20ejemplo%3C/text%3E%3C/svg%3E" width="800" height="600" loading="lazy"
+                   alt="Fogón de leña encendido con ollas de barro sobre el fuego">
+              <figcaption class="gallery__caption">Fogón de leña</figcaption>
+            </figure>
+          </li>
+          <li class="gallery__item">
+            <figure>
+              <img class="gallery__img" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20600'%3E%3Crect%20width='800'%20height='600'%20fill='%23EFE2CF'/%3E%3Ctext%20x='50%25'%20y='50%25'%20fill='%236B5A4E'%20font-family='sans-serif'%20font-size='40'%20text-anchor='middle'%20dominant-baseline='middle'%3EImagen%20de%20ejemplo%3C/text%3E%3C/svg%3E" width="800" height="600" loading="lazy"
+                   alt="Plato de ajiaco con crema, alcaparras y mazorca">
+              <figcaption class="gallery__caption">Ajiaco</figcaption>
+            </figure>
+          </li>
+          <li class="gallery__item">
+            <figure>
+              <img class="gallery__img" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20600'%3E%3Crect%20width='800'%20height='600'%20fill='%23EFE2CF'/%3E%3Ctext%20x='50%25'%20y='50%25'%20fill='%236B5A4E'%20font-family='sans-serif'%20font-size='40'%20text-anchor='middle'%20dominant-baseline='middle'%3EImagen%20de%20ejemplo%3C/text%3E%3C/svg%3E" width="800" height="600" loading="lazy"
+                   alt="Bandeja paisa servida con arepa y aguacate">
+              <figcaption class="gallery__caption">Bandeja paisa</figcaption>
+            </figure>
+          </li>
+          <li class="gallery__item">
+            <figure>
+              <img class="gallery__img" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20600'%3E%3Crect%20width='800'%20height='600'%20fill='%23EFE2CF'/%3E%3Ctext%20x='50%25'%20y='50%25'%20fill='%236B5A4E'%20font-family='sans-serif'%20font-size='40'%20text-anchor='middle'%20dominant-baseline='middle'%3EImagen%20de%20ejemplo%3C/text%3E%3C/svg%3E" width="800" height="600" loading="lazy"
+                   alt="Terraza con plantas y mesas al aire libre">
+              <figcaption class="gallery__caption">Terraza</figcaption>
+            </figure>
+          </li>
+          <li class="gallery__item">
+            <figure>
+              <img class="gallery__img" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20800%20600'%3E%3Crect%20width='800'%20height='600'%20fill='%23EFE2CF'/%3E%3Ctext%20x='50%25'%20y='50%25'%20fill='%236B5A4E'%20font-family='sans-serif'%20font-size='40'%20text-anchor='middle'%20dominant-baseline='middle'%3EImagen%20de%20ejemplo%3C/text%3E%3C/svg%3E" width="800" height="600" loading="lazy"
+                   alt="Postre de natas y brevas con arequipe sobre una mesa de madera">
+              <figcaption class="gallery__caption">Postres</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         6. TESTIMONIOS
+         3 tarjetas con testimonios de ejemplo, rotulados como tales.
+         ========================================================== -->
+    <section class="section" id="testimonios" aria-labelledby="titulo-testimonios">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title" id="titulo-testimonios">Lo que dicen nuestros comensales</h2>
+          <p class="section__intro">Testimonios de ejemplo para este proyecto académico.</p>
+        </header>
+
+        <ul role="list" class="card-grid card-grid--trio">
+          <li class="card card--testimonial">
+            <figure class="testimonial">
+              <svg class="icon card__icon card__icon--quote" aria-hidden="true" focusable="false"><use href="#icon-comillas"></use></svg>
+              <h3 class="card__title">“Como el ajiaco de mi mamá”</h3>
+              <blockquote class="card__text">
+                <p>Vine un domingo con mi familia y el ajiaco nos devolvió a la casa de la infancia. La atención fue muy cálida.</p>
+              </blockquote>
+              <figcaption class="card__footer">
+                <span class="testimonial__author">Laura M., docente</span>
+                <span class="badge">Ejemplo</span>
+              </figcaption>
+            </figure>
+          </li>
+          <li class="card card--testimonial">
+            <figure class="testimonial">
+              <svg class="icon card__icon card__icon--quote" aria-hidden="true" focusable="false"><use href="#icon-comillas"></use></svg>
+              <h3 class="card__title">“El almuerzo que me salva la semana”</h3>
+              <blockquote class="card__text">
+                <p>Queda cerca de la universidad, los precios son justos y el sancocho siempre llega caliente.</p>
+              </blockquote>
+              <figcaption class="card__footer">
+                <span class="testimonial__author">Andrés R., estudiante</span>
+                <span class="badge">Ejemplo</span>
+              </figcaption>
+            </figure>
+          </li>
+          <li class="card card--testimonial">
+            <figure class="testimonial">
+              <svg class="icon card__icon card__icon--quote" aria-hidden="true" focusable="false"><use href="#icon-comillas"></use></svg>
+              <h3 class="card__title">“Ideal para el almuerzo del domingo”</h3>
+              <blockquote class="card__text">
+                <p>Reservamos para doce personas y nos tenían la mesa lista. Volveremos por el postre de natas.</p>
+              </blockquote>
+              <figcaption class="card__footer">
+                <span class="testimonial__author">Familia Gómez</span>
+                <span class="badge">Ejemplo</span>
+              </figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         7. RESERVAS
+         Formulario de 7 campos dentro de una tarjeta. Sin envío real.
+         - Las reglas básicas están en el HTML (required, min, max, pattern)
+           para que funcione la validación nativa si JavaScript no carga.
+         - app.js añade novalidate, mensajes en español, la regla de domingo,
+           el rango de fechas (hoy a 30 días) y la confirmación.
+         - Cada campo tiene una pista (__hint) y un contenedor de error (__error)
+           vinculados con aria-describedby.
+         ========================================================== -->
+    <section class="section section--alt" id="reservas" aria-labelledby="titulo-reservas">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title" id="titulo-reservas">Reserva tu mesa</h2>
+          <p class="section__intro">Te esperamos. Completa el formulario y te confirmamos tu reserva.</p>
+        </header>
+
+        <div class="card card--form">
+
+          <form class="form" id="form-reserva">
+            <p class="form__note">Los campos marcados con <span aria-hidden="true">*</span><span class="visually-hidden">asterisco</span> son obligatorios.</p>
+
+            <!-- Resumen de errores: app.js lo muestra al enviar si hay campos por corregir -->
+            <div class="form__summary" id="resumen-errores" role="alert" hidden>
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-alerta"></use></svg>
+              <p id="resumen-errores-texto"></p>
+            </div>
+
+            <div class="form__grid">
+              <!-- Nombre -->
+              <div class="field field--full">
+                <label class="field__label" for="nombre">Nombre completo <span aria-hidden="true">*</span></label>
+                <input class="field__input" type="text" id="nombre" name="nombre"
+                       autocomplete="name" required minlength="2" maxlength="80"
+                       aria-describedby="nombre-error">
+                <p class="field__error" id="nombre-error"></p>
+              </div>
+
+              <!-- Celular -->
+              <div class="field">
+                <label class="field__label" for="celular">Celular <span aria-hidden="true">*</span></label>
+                <input class="field__input" type="tel" id="celular" name="celular"
+                       autocomplete="tel-national" inputmode="numeric" required
+                       pattern="[ \-]*3([ \-]*[0-9]){9}[ \-]*"
+                       aria-describedby="celular-pista celular-error">
+                <p class="field__hint" id="celular-pista">10 dígitos, empieza por 3. Ej.: 300 123 4567</p>
+                <p class="field__error" id="celular-error"></p>
+              </div>
+
+              <!-- Correo -->
+              <div class="field">
+                <label class="field__label" for="correo">Correo electrónico <span aria-hidden="true">*</span></label>
+                <input class="field__input" type="email" id="correo" name="correo"
+                       autocomplete="email" required
+                       aria-describedby="correo-pista correo-error">
+                <p class="field__hint" id="correo-pista">Ej.: nombre@correo.com</p>
+                <p class="field__error" id="correo-error"></p>
+              </div>
+
+              <!-- Fecha: app.js fija min (hoy) y max (hoy + 30 días) -->
+              <div class="field">
+                <label class="field__label" for="fecha">Fecha <span aria-hidden="true">*</span></label>
+                <input class="field__input" type="date" id="fecha" name="fecha" required
+                       aria-describedby="fecha-pista fecha-error">
+                <p class="field__hint" id="fecha-pista">Desde hoy y hasta 30 días después.</p>
+                <p class="field__error" id="fecha-error"></p>
+              </div>
+
+              <!-- Hora: intervalos de 15 minutos; la regla de domingo la valida app.js -->
+              <div class="field">
+                <label class="field__label" for="hora">Hora <span aria-hidden="true">*</span></label>
+                <input class="field__input" type="time" id="hora" name="hora" required
+                       min="11:30" max="20:30" step="900"
+                       aria-describedby="hora-pista hora-error">
+                <p class="field__hint" id="hora-pista">Lunes a sábado de 11:30 a. m. a 8:30 p. m.; domingos hasta las 4:30 p. m.</p>
+                <p class="field__error" id="hora-error"></p>
+              </div>
+
+              <!-- Número de personas -->
+              <div class="field">
+                <label class="field__label" for="personas">Número de personas <span aria-hidden="true">*</span></label>
+                <input class="field__input" type="number" id="personas" name="personas"
+                       inputmode="numeric" required min="1" max="12" step="1"
+                       aria-describedby="personas-pista personas-error">
+                <p class="field__hint" id="personas-pista">De 1 a 12. Para grupos mayores, escríbenos por WhatsApp.</p>
+                <p class="field__error" id="personas-error"></p>
+              </div>
+
+              <!-- Comentarios (opcional) con contador de caracteres -->
+              <div class="field field--full">
+                <label class="field__label" for="comentarios">Comentarios (opcional)</label>
+                <textarea class="field__input field__input--textarea" id="comentarios" name="comentarios"
+                          rows="4" maxlength="300"
+                          aria-describedby="comentarios-contador comentarios-error"></textarea>
+                <p class="field__hint field__counter" id="comentarios-contador">0/300 caracteres</p>
+                <p class="field__error" id="comentarios-error"></p>
+              </div>
+            </div>
+
+            <div class="form__actions">
+              <button class="btn btn--primary" type="submit">Confirmar reserva</button>
+            </div>
+          </form>
+
+          <!-- Confirmación: reemplaza al formulario cuando los datos son válidos.
+               app.js completa el resumen y mueve el foco al título. -->
+          <div class="confirmation" id="confirmacion" hidden>
+            <svg class="icon confirmation__icon" aria-hidden="true" focusable="false"><use href="#icon-check"></use></svg>
+            <h3 class="confirmation__title" id="confirmacion-titulo" tabindex="-1">¡Reserva recibida!</h3>
+            <dl class="confirmation__list">
+              <div>
+                <dt>Nombre</dt>
+                <dd id="confirmacion-nombre"></dd>
+              </div>
+              <div>
+                <dt>Fecha</dt>
+                <dd id="confirmacion-fecha"></dd>
+              </div>
+              <div>
+                <dt>Hora</dt>
+                <dd id="confirmacion-hora"></dd>
+              </div>
+              <div>
+                <dt>Personas</dt>
+                <dd id="confirmacion-personas"></dd>
+              </div>
+            </dl>
+            <p class="confirmation__note">Esto es una demostración: no se envió ningún dato.</p>
+            <button class="btn btn--secondary" id="nueva-reserva" type="button">Hacer otra reserva</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         8. UBICACIÓN
+         Tarjetas de dirección, horario y contacto (cada una con su acción)
+         y mapa de Google Maps embebido.
+         ========================================================== -->
+    <section class="section" id="ubicacion" aria-labelledby="titulo-ubicacion">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title" id="titulo-ubicacion">Cómo llegar</h2>
+          <p class="section__intro">Estamos en el corazón de Chapinero, a dos cuadras de la carrera Séptima.</p>
+        </header>
+
+        <ul role="list" class="card-grid card-grid--trio">
+          <!-- Dirección -->
+          <li class="card card--contact">
+            <svg class="icon card__icon" aria-hidden="true" focusable="false"><use href="#icon-ubicacion"></use></svg>
+            <h3 class="card__title">Dirección</h3>
+            <address class="card__text">Calle 57 # 9-25<br>Chapinero, Bogotá</address>
+            <div class="card__footer">
+              <a class="btn btn--secondary"
+                 href="https://www.google.com/maps/search/?api=1&amp;query=Calle+57+%23+9-25+Chapinero+Bogot%C3%A1"
+                 target="_blank" rel="noopener">Cómo llegar<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a>
+            </div>
+          </li>
+
+          <!-- Horario -->
+          <li class="card card--contact">
+            <svg class="icon card__icon" aria-hidden="true" focusable="false"><use href="#icon-reloj"></use></svg>
+            <h3 class="card__title">Horario</h3>
+            <dl class="card__text schedule">
+              <div>
+                <dt>Lunes a sábado</dt>
+                <dd>11:30 a. m. a 9:00 p. m.</dd>
+              </div>
+              <div>
+                <dt>Domingos</dt>
+                <dd>11:30 a. m. a 5:00 p. m.</dd>
+              </div>
+            </dl>
+            <div class="card__footer">
+              <a class="btn btn--primary" href="#reservas">Reservar</a>
+            </div>
+          </li>
+
+          <!-- Contacto -->
+          <li class="card card--contact">
+            <svg class="icon card__icon" aria-hidden="true" focusable="false"><use href="#icon-mensaje"></use></svg>
+            <h3 class="card__title">Contacto</h3>
+            <p class="card__text">WhatsApp: +57 300 000 0000</p>
+            <div class="card__footer">
+              <a class="btn btn--secondary" href="https://wa.me/573000000000"
+                 target="_blank" rel="noopener">Escribir por WhatsApp<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a>
+            </div>
+          </li>
+        </ul>
+
+        <!-- Mapa: carga diferida; el enlace "Cómo llegar" es la alternativa sin mapa -->
+        <div class="map">
+          <iframe class="map__frame"
+                  src="https://www.google.com/maps?q=Calle+57+%23+9-25,+Chapinero,+Bogot%C3%A1&amp;output=embed"
+                  title="Mapa de Fogón de la Abuela en Chapinero, Bogotá"
+                  width="1200" height="675" loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       9. PIE DE PÁGINA
+       Contacto, horario, redes de ejemplo y nota de proyecto académico.
+       Incluye el botón "Volver arriba" (app.js lo oculta mientras el hero está visible).
+       ========================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+
+        <div class="site-footer__col">
+          <a class="logo logo--footer" href="#inicio">
+            <svg class="icon logo__icon" aria-hidden="true" focusable="false"><use href="#icon-fuego"></use></svg>
+            <span class="logo__text">Fogón de la Abuela</span>
+          </a>
+          <p>Comida típica colombiana cocinada a fuego lento.</p>
+        </div>
+
+        <div class="site-footer__col">
+          <p class="site-footer__title">Contacto y horario</p>
+          <address>
+            Calle 57 # 9-25, Chapinero, Bogotá<br>
+            WhatsApp: <a href="https://wa.me/573000000000" target="_blank" rel="noopener">+57 300 000 0000<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a>
+          </address>
+          <p>Lunes a sábado: 11:30 a. m. a 9:00 p. m.<br>Domingos: 11:30 a. m. a 5:00 p. m.</p>
+        </div>
+
+        <div class="site-footer__col">
+          <p class="site-footer__title">Redes sociales (ejemplo)</p>
+          <ul role="list" class="site-footer__social">
+            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+            <li><a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+            <li><a href="https://www.tiktok.com/" target="_blank" rel="noopener">TikTok<span class="visually-hidden"> (se abre en una pestaña nueva)</span></a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>Proyecto académico — contenido de ejemplo.</p>
+        <p><small>© 2026 Fogón de la Abuela.</small></p>
+      </div>
+    </div>
+
+    <a class="back-to-top" id="volver-arriba" href="#inicio" aria-label="Volver arriba">
+      <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-flecha-arriba"></use></svg>
+    </a>
+  </footer>
+
+</body>
+</html>
